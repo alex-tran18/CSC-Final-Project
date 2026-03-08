@@ -46,3 +46,5 @@ def highest_and_lowest(users):
         if user.total_time_spent < lowest.total_time_spent:
             lowest = user
     return highest, lowest
+
+def
