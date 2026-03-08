@@ -5,7 +5,7 @@ class User:
     # input: productivity loss score as a float or integer
     # input: watch reason as a string
     # input: debt status as a boolean
-    def __init__(self, user_id, total_time_spent, productivity_loss, watch_reason,, debt):
+    def __init__(self, user_id, total_time_spent, productivity_loss, watch_reason, debt):
         self.user_id = user_id
         self.total_time_spent = total_time_spent
         self.productivity_loss = productivity_loss
@@ -16,7 +16,7 @@ class User:
     # input: User object for which a string representation is desire
     # output: string representation
     def __repr__(self):
-        return 'User({}, {}, {}, {}, {}'.format(
+        return 'User({}, {}, {}, {}, {})'.format(
             self.user_id,
             self.total_time_spent,
             self.productivity_loss,
