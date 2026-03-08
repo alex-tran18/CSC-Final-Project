@@ -11,7 +11,7 @@ def convert_bool(tf:str) -> bool:
     else:
         return False
 
-# Load the CSV File
+# Load the CSV File to Read
 def load_users(filename):
     users = []
     file = open(filename, 'r')
