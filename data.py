@@ -16,7 +16,7 @@ class User:
     # input: User object for which a string representation is desire
     # output: string representation
     def __repr__(self):
-        return 'User({}, {}, {}, {}, {}'.format(
+        return 'User({}, {}, {}, {}, {})'.format(
             self.user_id,
             self.total_time_spent,
             self.productivity_loss,
@@ -24,3 +24,18 @@ class User:
             self.debt
         )
 
+    def assign_usage_level(self):
+        if self.total_time_spent < 100:
+            return "low"
+        if self.total_time_spent < 200:
+            return "medium"
+        else:
+            return "high"
+
+    def calculate_productivity_ratio(self):
+        if self.total_time_spent == 0:
+            return 0
+        return self.productivity_loss / self.total_time_spent
+
+    def high_risk(self):
+        return sekf.assign_usage_level() == "high" and self.debt == True
