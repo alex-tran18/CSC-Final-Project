@@ -1,4 +1,5 @@
 import csv
+import math
 import data
 from data import User
 
@@ -11,69 +12,105 @@ def convert_bool(tf:str) -> bool:
         return False
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #Count watch reasons
-def count_watch_reasons(users):
-    reason_count = {}
+    def count_watch_reasons(users):
 
-    for user in users:
-        reason = user.watch_reason
-        if reason not in reason_count:
-            reason_count[reason] = 1
-        else:
-            reason_count[reason] += 1
+        reason_count = {}
 
-    return reason_count
+        for user in users:
+            reason = user.watch_reason
+
+            if reason not in reason_count:
+                reason_count[reason] = 1
+            else:
+                reason_count[reason] += 1
+
+        return reason_count
 
 #Main Program
-def main():
-    filename = "screen_time.data"
+    def main():
 
-    users = load_users_from_screentime_data(filename)
+        filename = "screen_time.data"  # change if your file is named differently
 
-    print("Total users: ", len(users))
-    print()
+        users = load_users_from_screentime_data(filename)
 
-    #Print first 100 users
-    print("First 100 users")
-    limit = 100
-    if len(users) < 100:
-        limit = len(users)
+        print("Total Users:", len(users))
+        print()
 
-    for i in range(limit):
-        print("Index:", i, "UserID: ", users[i].user_id)
-    print()
+        # Print first 20 users
+        print("First 20 Users:")
+        limit = 20
+        if len(users) < 20:
+            limit = len(users)
 
-    #Average
-    average = calculate_average_time(users)
-    print("Average Time Spent: ", round(average, 2))
-    print()
+        for i in range(limit):
+            print("Index:", i, "UserID:", users[i].user_id)
 
-    #Highest and Lowest
-    result = find_highest_and_lowest(users)
+        print()
 
-    highest = result[0]
-    lowest = result[1]
+        # Average
+        average = calculate_average_time(users)
+        print("Average Time Spent:", round(average, 2))
+        print()
 
-    print("Highest Usage User: ", highest.user_id, highest.total_time_spent)
-    print("Lowest Usage User: ", lowest.user_id, lowest.total_time_spent)
-    print()
+        # Highest & Lowest
+        highest, lowest = find_highest_and_lowest(users)
 
-    # Watch reason dictionary
-    reasons = count_watch_reasons(users)
+        print("Highest Usage User:", highest.user_id, highest.total_time_spent)
+        print("Lowest Usage User:", lowest.user_id, lowest.total_time_spent)
+        print()
 
-    print("Watch Reason Counts: ")
-    for reason in reasons:
-        print(reason, ";", reasons[reason])
+        # Watch reason dictionary
+        reasons = count_watch_reasons(users)
 
-    print()
+        print("Watch Reason Counts:")
+        for reason in reasons:
+            print(reason, ":", reasons[reason])
 
-    # High risk users
-    print("High Risk users (High usage and debt): ")
-    for user in users:
-        if user.high_risk():
-            print("User ID: ", user.user_id)
+        print()
 
-    print()
-    print("Tip: LImiting screen time can improve producitivity and financial wellbeing.")
+        # High risk users
+        print("High Risk Users (High usage + Debt):")
+        for user in users:
+            if user.high_risk():
+                print("UserID:", user.user_id)
 
-main()
+        print()
+        print("Tip: Limiting screen time can improve productivity and financial wellbeing.")
+
+    main()
