@@ -62,6 +62,33 @@ def count_watch_reasons(users):
 
     return reason_count
 
+def build_summary_text(users) -> str:
+
+    lines = []
+    lines.append("Social Media Screen Time Analysis")
+    lines.append("=================================")
+    lines.append(f"Total users: {len(users)}")
+
+    # Overall average
+    avg = average_time(users)
+    lines.append(f"Overall average usage (hours/month): {avg:.2f}")
+
+    # Highest and Lowest
+    highest, lowest = highest_and_lowest(users)
+
+    if highest is not None:
+        lines.append("")
+        lines.append("Highest Usage User:")
+        lines.append(
+            f"User {highest.user_id} — {highest.total_time_spent} hours/month"
+        )
+
+        lines.append("")
+        lines.append("Lowest Usage User:")
+        lines.append(
+            f"User {lowest.user_id} — {lowest.total_time_spent} hours/month"
+        )
+
 #Main Program
 def main():
 
