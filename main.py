@@ -48,19 +48,19 @@ def highest_and_lowest(users):
     return highest, lowest
 
 #Count watch reasons
-    def count_watch_reasons(users):
+def count_watch_reasons(users):
 
-        reason_count = {}
+    reason_count = {}
 
-        for user in users:
-            reason = user.watch_reason
+    for user in users:
+        reason = user.watch_reason
 
-            if reason not in reason_count:
-                reason_count[reason] = 1
-            else:
-                reason_count[reason] += 1
+        if reason not in reason_count:
+            reason_count[reason] = 1
+        else:
+            reason_count[reason] += 1
 
-        return reason_count
+    return reason_count
 
 #Main Program
 def main():
