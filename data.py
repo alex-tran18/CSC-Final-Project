@@ -40,19 +40,3 @@ class User:
     def high_risk(self):
         return self.assign_usage_level() == "high" and self.debt == True
 
-
-    def assign_usage_level(self):
-        if self.total_time_spent < 100:
-            return "low"
-        if self.total_time_spent < 200:
-            return "medium"
-        else:
-            return "high"
-
-    def calculate_productivity_ratio(self):
-        if self.total_time_spent == 0:
-            return 0
-        return self.productivity_loss / self.total_time_spent
-
-    def high_risk(self):
-        return self.assign_usage_level() == "high" and self.debt == True
