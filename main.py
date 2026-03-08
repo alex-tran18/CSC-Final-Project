@@ -63,56 +63,55 @@ from data import User
         return reason_count
 
 #Main Program
-    def main():
+def main():
 
-        filename = "screen_time.data"  # change if your file is named differently
+    filename = "screen_time.data"  # change if your file is named differently
 
-        users = load_users_from_screentime_data(filename)
+    users = load_users(filename)
 
-        print("Total Users:", len(users))
-        print()
+    print("Total Users:", len(users))
+    print()
 
-        # Print first 20 users
-        print("First 20 Users:")
-        limit = 20
-        if len(users) < 20:
-            limit = len(users)
+    # Print first 1000 users
+    print("First 1000 Users:")
+    limit = 1000
+    if len(users) < 1000:
+        limit = len(users)
 
-        for i in range(limit):
-            print("Index:", i, "UserID:", users[i].user_id)
+    for i in range(limit):
+        print("Index:", i, "UserID:", users[i].user_id)
 
-        print()
+    print()
 
-        # Average
-        average = calculate_average_time(users)
-        print("Average Time Spent:", round(average, 2))
-        print()
+    # Average
+    average = average_time(users)
+    print("Average Time Spent:", round(average, 2))
+    print()
 
-        # Highest & Lowest
-        highest, lowest = find_highest_and_lowest(users)
+    # Highest & Lowest
+    highest, lowest = highest_and_lowest(users)
 
-        print("Highest Usage User:", highest.user_id, highest.total_time_spent)
-        print("Lowest Usage User:", lowest.user_id, lowest.total_time_spent)
-        print()
+    print("Highest Usage User:", highest.user_id, highest.total_time_spent)
+    print("Lowest Usage User:", lowest.user_id, lowest.total_time_spent)
+    print()
 
-        # Watch reason dictionary
-        reasons = count_watch_reasons(users)
+    # Watch reason dictionary
+    reasons = count_watch_reasons(users)
 
-        print("Watch Reason Counts:")
-        for reason in reasons:
-            print(reason, ":", reasons[reason])
+    print("Watch Reason Counts:")
+    for reason in reasons:
+        print(reason, ":", reasons[reason])
 
-        print()
+    print()
 
-        # High risk users
-        print("High Risk Users (High usage + Debt):")
-        for user in users:
-            if user.high_risk():
-                print("UserID:", user.user_id)
+    # High risk users
+    print("High Risk Users (High usage + Debt):")
+    for user in users:
+        if user.high_risk():
+            print("UserID:", user.user_id)
 
-        print()
-        print("Tip: Limiting screen time can improve productivity and financial wellbeing.")
+    print()
+    print("Tip: Limiting screen time can improve productivity and financial wellbeing.")
 
-    main()
+main()
 
-#djfkdsjf
