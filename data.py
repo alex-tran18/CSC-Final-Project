@@ -33,7 +33,7 @@ class User:
             return "high"
 
     def calculate_productivity_ratio(self):
-        if self.total_time_spent = 0:
+        if self.total_time_spent == 0:
             return 0
         return self.productivity_loss / self.total_time_spent
 
