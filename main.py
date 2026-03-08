@@ -113,5 +113,8 @@ def main():
     print()
     print("Tip: Limiting screen time can improve productivity and financial wellbeing.")
 
-main()
+    write_summary_file(users)
+
+if __name__ == "__main__":
+    main()
 
