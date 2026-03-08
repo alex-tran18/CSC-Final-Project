@@ -38,4 +38,4 @@ class User:
         return self.productivity_loss / self.total_time_spent
 
     def high_risk(self):
-        return sekf.assign_usage_level() == "high" and self.debt == True
+        return self.assign_usage_level() == "high" and self.debt == True
