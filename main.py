@@ -30,7 +30,7 @@ def load_users(filename):
     return users
 
 # Calculate Average Screen Time of Each User
-def average_time(users):
+def calculate_average_time(users):
     total = 0
     for user in users:
         total += user.total_time_spent
@@ -84,7 +84,7 @@ def main():
     print()
 
 # Average
-    average = average_time(users)
+    average = calculate_average_time(users)
     print("Average Time Spent:", round(average, 2))
     print()
 
