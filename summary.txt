@@ -15,6 +15,13 @@ Habit: 339
 Entertainment: 264
 Boredom: 277
 
+Correlation (Screen Time vs Debt): -0.019
+
+Debt vs Screen Time:
+Avg time (Debt): 150.10 hours/month | Users: 599
+Avg time (No Debt): 153.36 hours/month | Users: 401
+Difference (Debt - No Debt): -3.26
+
 Average Productivity Ratio: 0.065
 
 Productivity Ratios (loss/time):
@@ -1018,13 +1025,6 @@ User 997: 0.035
 User 998: 0.055
 User 999: 0.020
 User 1000: 0.036
-
-Correlation (Screen Time vs Debt): -0.019
-
-Debt vs Screen Time:
-Avg time (Debt): 150.10 hours/month | Users: 599
-Avg time (No Debt): 153.36 hours/month | Users: 401
-Difference (Debt - No Debt): -3.26
 
 Social Impact Insight:
 Excessive screen time is associated with increased productivity loss.
