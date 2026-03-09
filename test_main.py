@@ -29,6 +29,22 @@ class UserTest(unittest.TestCase):
         u = User(99, 100, 25, "Habit", False)
         self.assertAlmostEqual(u.calculate_productivity_ratio(), 0.25, places = 3)
 
+    def test_calculate_productivity_ratio_zero_time(self):
+        u = User(99, 0, 25, "Habit", False)
+        self.assertEqual(u.calculate_productivity_ratio(), 0)
+
+    def test_high_risk_true(self):
+        u = User(99, 250, 25, "Habit", True)
+        self.assertTrue(u.high_risk())
+
+    def test_high_risk_false(self):
+        u = User(99, 80, 5, "Habit", True)
+        self.assertFalse(u.high_risk())
+
+    def test_high_risk_no_debt(self):
+        u = User(99, 250, 5, "Habit", False)
+        self.assertFalse(u.high_risk())
+
 # convert_bool tests
     def test_convert_bool_true(self):
         self.assertTrue(main.convert_bool("true"))
