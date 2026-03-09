@@ -118,7 +118,7 @@ def build_summary_text(users) -> str:
     else:
         for user in users:
             ratio = user.calculate_productivity_ratio()
-            lines.append(f"User {user.user_id}: {ratio: .3f}")
+            lines.append(f"User {user.user_id}: {ratio:.3f}")
 
     # Social responsibility message
     lines.append("")
@@ -127,7 +127,6 @@ def build_summary_text(users) -> str:
     lines.append("Encouraging healthier digital habits can improve focus and financial wellbeing.")
 
     return "\n".join(lines)
-
 
 def write_summary_file(users, filename="summary.txt"):
     text = build_summary_text(users)
