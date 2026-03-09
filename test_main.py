@@ -6,43 +6,43 @@ from data import User
 class UserTest(unittest.TestCase):
     def setUp(self):
         self.users = [
-            User(1, 80, 3, "Procrastination", True),
-            User( 2, 228, 5, "Habit", False),
-            User(3, 30, 6, "Entertainment", False),
-            User(4, 101, 3, "Habit", True)
+            User(1, 80, 3, True),
+            User( 2, 228, 5, False),
+            User(3, 30, 6, False),
+            User(4, 101, 3, True)
         ]
 
     #user method tests
     def test_assign_usage_level_low(self):
-        u = User(99, 80, 1, "Habit", False)
+        u = User(99, 80, 1, False)
         self.assertEqual(u.assign_usage_level(), "low")
 
     def test_assign_usage_level_medium(self):
-        u = User(99, 150, 1, "Habit", False)
+        u = User(99, 150, 1, False)
         self.assertEqual(u.assign_usage_level(), "medium")
 
     def test_assign_usage_level_high(self):
-        u = User(99, 250, 1, "Habit", False)
+        u = User(99, 250, 1, False)
         self.assertEqual(u.assign_usage_level(), "high")
 
     def test_calculate_productivity_ratio_normal(self):
-        u = User(99, 100, 25, "Habit", False)
+        u = User(99, 100, 25, False)
         self.assertAlmostEqual(u.calculate_productivity_ratio(), 0.25, places = 3)
 
     def test_calculate_productivity_ratio_zero_time(self):
-        u = User(99, 0, 25, "Habit", False)
+        u = User(99, 0, 25, False)
         self.assertEqual(u.calculate_productivity_ratio(), 0)
 
     def test_high_risk_true(self):
-        u = User(99, 250, 25, "Habit", True)
+        u = User(99, 250, 25, True)
         self.assertTrue(u.high_risk())
 
     def test_high_risk_false(self):
-        u = User(99, 80, 5, "Habit", True)
+        u = User(99, 80, 5, True)
         self.assertFalse(u.high_risk())
 
     def test_high_risk_no_debt(self):
-        u = User(99, 250, 5, "Habit", False)
+        u = User(99, 250, 5, False)
         self.assertFalse(u.high_risk())
 
 # convert_bool tests
@@ -92,29 +92,29 @@ class UserTest(unittest.TestCase):
 
     def test_correlation_time_and_debt_all_same_debt(self):
         users = [
-            User(1, 10, 1, "Habit", True),
-            User(2,50,1, "Habit", True),
-            User(3, 100, 1, "Habit", True)
+            User(1, 10, 1,  True),
+            User(2,50,1,  True),
+            User(3, 100, 1,  True)
 
         ]
         self.assertEqual(main.correlation_time_and_debt(users), 0)
 
     def test_correlation_time_and_debt_positive(self):
         users = [
-            User(1, 10, 1, "Habit", False),
-            User(2, 20, 1, "Habit", False),
-            User(3, 80, 1, "Habit", True),
-            User(4, 100, 1, "Habit", True)
+            User(1, 10, 1,  False),
+            User(2, 20, 1,  False),
+            User(3, 80, 1,  True),
+            User(4, 100, 1, True)
         ]
         corr = main.correlation_time_and_debt(users)
         self.assertGreater(corr,0)
 
     def test_correlation_time_and_debt_negative(self):
         users = [
-            User(1, 10, 1,"Habit", True),
-            User(2, 20, 1, "Habit", True),
-            User(3, 80, 1, "Habit", False),
-            User(4, 100, 1, "Habit", False)
+            User(1, 10, 1,True),
+            User(2, 20, 1,True),
+            User(3, 80, 1,False),
+            User(4, 100, 1,False)
         ]
         corr = main.correlation_time_and_debt(users)
         self.assertLess(corr,0)
@@ -129,10 +129,10 @@ class UserTest(unittest.TestCase):
 
     def test_average_time_by_debt_mixed(self):
         users = [
-            User(1, 100, 1, "Habit", True),
-            User(2, 300, 1, "Habit", True),
-            User(3, 50, 1, "Habit", False),
-            User(4, 150, 1, "Habit", False)
+            User(1, 100, 1, True),
+            User(2, 300, 1, True),
+            User(3, 50, 1,False),
+            User(4, 150, 1, False),
         ]
 
         result = main.average_time_by_debt(users)
@@ -149,8 +149,8 @@ class UserTest(unittest.TestCase):
 
     def test_average_time_by_debt_all_debt(self):
         users = [
-            User(1, 100, 1, "Habit", True),
-            User(2, 200, 1, "Habit", True)
+            User(1, 100, 1, True),
+            User(2, 200, 1, True)
         ]
 
         result = main.average_time_by_debt(users)
@@ -161,8 +161,8 @@ class UserTest(unittest.TestCase):
 
     def test_average_time_by_debt_no_debt(self):
         users = [
-            User(1, 100, 1, "Habit", False),
-            User(2, 200, 1, "Habit", False)
+            User(1, 100, 1,False),
+            User(2, 200, 1,False)
         ]
 
         result = main.average_time_by_debt(users)
