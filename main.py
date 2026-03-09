@@ -155,7 +155,7 @@ def build_summary_text(users) -> str:
     lines.append(f"Avg time (No Debt): {stats[1]:.2f} hours/month | Users: {stats[3]}")
     lines.append(f"Difference (Debt - No Debt): {(stats[0] - stats[1]):.2f}")
 
-    # Average Productivity Ratios
+    # Average Productivity Ratio
     avg_ratio = average_productivity_ratio(users)
     lines.append("")
     lines.append(f"Average Productivity Ratio: {avg_ratio:.3f}")
