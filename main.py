@@ -74,7 +74,9 @@ def build_summary_text(users) -> str:
     lines.append(f"Overall average usage (hours/month): {avg:.2f}")
 
     # Highest and Lowest
-    highest, lowest = highest_and_lowest(users)
+    result = highest_and_lowest(users)
+    highest = result[0]
+    lowest = result[1]
 
     if highest is not None:
         lines.append("")
@@ -93,9 +95,8 @@ def build_summary_text(users) -> str:
     lines.append("")
     lines.append("Watch Reason Summary:")
     reasons = count_watch_reasons(users)
-    for reason, count in reasons.items():
-        lines.append(f"{reason}: {count}")
 
+    if len(reasons) ==
     # Productivity ratios
     lines.append("")
     lines.append("Productivity Ratios (loss/time):")
@@ -172,4 +173,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-#sdhfds
