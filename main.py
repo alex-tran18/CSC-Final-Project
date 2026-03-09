@@ -170,7 +170,7 @@ def build_summary_text(users) -> str:
         for reason in reasons:
             lines.append(f"{reason}: {reasons[reason]}")
 
-    # Average Productivity Ratio
+    # Average Productivity Ratios
     avg_ratio = average_productivity_ratio(users)
     lines.append("")
     lines.append(f"Average Productivity Ratio: {avg_ratio:.3f}")
