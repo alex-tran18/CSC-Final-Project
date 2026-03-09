@@ -22,7 +22,6 @@ def load_users(filename):
             int(row["UserID"]),
             float(row["Total Time Spent"]),
             float(row["ProductivityLoss"]),
-            row["Watch Reason"],
             convert_bool(row["Debt"])
         )
         users.append(user)
@@ -143,17 +142,6 @@ def build_summary_text(users) -> str:
         lines.append(
             f"User {lowest.user_id} — {lowest.total_time_spent} hours/month"
         )
-
-    # Watch reason summary
-    lines.append("")
-    lines.append("Watch Reason Summary:")
-    reasons = count_watch_reasons(users)
-
-    if len(reasons) == 0:
-        lines.append("No watch reasons available.")
-    else:
-        for reason in reasons:
-            lines.append(f"{reason}: {reasons[reason]}")
 
     # correlation
     lines.append("")
