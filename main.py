@@ -159,7 +159,9 @@ def main():
     print()
 
     # Highest & Lowest
-    highest, lowest = highest_and_lowest(users)
+    result = highest_and_lowest(users)
+    highest = result[0]
+    lowest = result[1]
 
     print("Highest Usage User:", highest.user_id, highest.total_time_spent)
     print("Lowest Usage User:", lowest.user_id, lowest.total_time_spent)
