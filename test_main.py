@@ -129,6 +129,35 @@ class UserTest(unittest.TestCase):
         corr = main.correlation_time_and_debt(users)
         self.assertLess(corr,0)
 
+    #average time by debt
+    def test_average_time_by_debt_empty(self):
+        result = main.average_time_by_debt([])
+        self.assertEqual(result[0], 0)  # debt_avg
+        self.assertEqual(result[1], 0)  # no_debt_avg
+        self.assertEqual(result[2], 0)  # debt_count
+        self.assertEqual(result[3], 0)  # no_debt_count
+
+    def test_average_time_by_debt_mixed(self):
+        users = [
+            User(1, 100, 1, "Habit", True),
+            User(2, 300, 1, "Habit", True),
+            User(3, 50, 1, "Habit", False),
+            User(4, 150, 1, "Habit", False)
+        ]
+
+        result = main.average_time_by_debt(users)
+        debt_avg = result[0]
+        no_debt_avg = result[1]
+        debt_count = result[2]
+        no_debt_count = result[3]
+
+        # debt avg = (100 + 300) / 2 = 200
+        self.assertAlmostEqual(debt_avg, 200.0, places=3)
+        # no debt avg = (50 + 150) / 2 = 100
+        self.assertAlmostEqual(no_debt_avg, 100.0, places=3)
+
+        self.assertEqual(debt_count, 2)
+        self.assertEqual(no_debt_count, 2)
 
     # summary test
     def test_build_summary_text(self):
