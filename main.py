@@ -224,17 +224,11 @@ def main():
     print()
 
     # Print first 1000 users
-    print("First 1000 Users:")
-    limit = 1000
-    if len(users) < 1000:
-        limit = len(users)
+    print("Sample Users: ")
+    for u in users[:1000]:
+        print(u)
 
-    for i in range(limit):
-        print("Index:", i, "UserID:", users[i].user_id)
-
-    print()
-
-    # Average
+    # Average time
     average = average_time(users)
     print("Average Time Spent:", round(average, 2))
     print()
@@ -265,7 +259,7 @@ def main():
     print()
 
     # High risk users
-    print("High Risk Users (High usage + Debt):")
+    print("Users with High Screen Time and Debt:")
     for user in users:
         if user.high_risk():
             print("UserID:", user.user_id)
