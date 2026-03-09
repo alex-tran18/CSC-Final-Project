@@ -1,7 +1,7 @@
 import csv
 from data import User
 
-# Convert Debt String into Boolean Value
+# Convert Debt String into Boolean
 def convert_bool(tf:str) -> bool:
     tf = str(tf).strip().lower()
     if tf == "true":
@@ -31,6 +31,9 @@ def load_users(filename):
 
 # Calculate Average Screen Time of Each User
 def average_time(users):
+    if len(users) == 0
+        return 0
+
     total = 0
     for user in users:
         total += user.total_time_spent
@@ -38,6 +41,8 @@ def average_time(users):
 
 # Find the highest and lowest usage
 def highest_and_lowest(users):
+    if len(users) == 0:
+        return [None, None]
     highest = users[0]
     lowest = users[0]
     for user in users:
@@ -45,7 +50,7 @@ def highest_and_lowest(users):
             highest = user
         if user.total_time_spent < lowest.total_time_spent:
             lowest = user
-    return highest, lowest
+    return [highest, lowest]
 
 #Count watch reasons
 def count_watch_reasons(users):

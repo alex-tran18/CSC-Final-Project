@@ -55,5 +55,56 @@ class UserTest(unittest.TestCase):
         self.assertIsNone(highest)
         self.assertIsNone(lowest)
 
+    # Count Watch Reasons
+    def test_count_watch_reasons_count1(self):
+        result = main.count_watch_reasons(self.user)
+        self.assertEqual(result["Habit"], 2)
+        self.assertEqual(result["Procrastination"], 1)
+        self.assertEqual(result["Entertainment"], 1)
+
+    def test_count_watch_reasons_count2(self):
+        self.assertEqual(main.count_watch_reasons([]), {})
+
+    # summary test
+    def test_build_summary_text(self):
+        if hasattr(main, "build_summary_text"):
+            result = main.build_summary_text(self.user)
+            self.assertIn("Total users", result)
+            self.assertIn("Overall average", text)
+
+    # load_users test
+    def test_load_users(self):
+        filename = "test_data.csv"
+
+        with open(filename, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(
+                f,
+                fieldnames=[
+                    "user_id",
+                    "total_time_spent",
+                    "productivity_loss",
+                    "watch_reason",
+                    "Debt"
+                ]
+            )
+            writer.writeheader()
+            writer.writerow({
+                "user_id": "10",
+                "total_time_spent": "150",
+                "productivity_loss": "4",
+                "watch_reason": "Boredom",
+                "Debt": "true"
+            })
+
+        users = main.load_users(filename)
+
+        self.assertEqual(len(users), 1)
+        self.assertEqual(users[0].user_id, 10)
+        self.assertTrue(users[0].debt)
+
+    if __name__ == "__main__":
+        unittest.main()
+
+
 
 
