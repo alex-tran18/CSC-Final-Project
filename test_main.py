@@ -77,19 +77,19 @@ class UserTest(unittest.TestCase):
             writer = csv.DictWriter(
                 f,
                 fieldnames=[
-                    "user_id",
-                    "total_time_spent",
-                    "productivity_loss",
-                    "watch_reason",
+                    "UserID",
+                    "Total Time Spent",
+                    "ProductivityLoss",
+                    "Watch Reason",
                     "Debt"
                 ]
             )
             writer.writeheader()
             writer.writerow({
-                "user_id": "10",
-                "total_time_spent": "150",
-                "productivity_loss": "4",
-                "watch_reason": "Boredom",
+                "UserID": "10",
+                "Total Time Spent": "150",
+                "ProductivityLoss": "4",
+                "Watch Reason": "Boredom",
                 "Debt": "true"
             })
 
