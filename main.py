@@ -161,17 +161,6 @@ def build_summary_text(users) -> str:
     lines.append("")
     lines.append(f"Average Productivity Ratio: {avg_ratio:.3f}")
 
-    # Productivity ratios
-    lines.append("")
-    lines.append("Productivity Ratios (loss/time):")
-
-    if len(users) == 0:
-        lines.append("No users available.")
-    else:
-        for user in users:
-            ratio = user.calculate_productivity_ratio()
-            lines.append(f"User {user.user_id}: {ratio:.3f}")
-
     # Social responsibility message
     lines.append("")
     lines.append("Social Impact Insight:")
