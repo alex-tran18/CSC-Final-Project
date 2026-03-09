@@ -117,7 +117,7 @@ def average_time_by_debt(users):
 def build_summary_text(users) -> str:
 
     lines = []
-    lines.append("Social Media Screen Time Analysis")
+    lines.append("Social Media Screen Time Analysis:")
     lines.append(f"Total users: {len(users)}")
 
     # Overall average
