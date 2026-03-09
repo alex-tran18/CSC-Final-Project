@@ -243,15 +243,6 @@ def main():
     print("Lowest Usage User:", lowest.user_id, lowest.total_time_spent)
     print()
 
-    # Watch reason dictionary
-    reasons = count_watch_reasons(users)
-
-    print("Watch Reason Counts:")
-    for reason in reasons:
-        print(reason, ":", reasons[reason])
-
-    print()
-
     # Correlation between screen time and debt
     corr = correlation_time_and_debt(users)
 
