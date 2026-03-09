@@ -7,7 +7,7 @@ from data import User
 
 class UserTest(unittest.TestCase):
     def setUp(self):
-        self.user = [
+        self.users = [
             User(1, 80, 3, "Procrastination", True),
             User( 2, 228, 5, "Habit", False),
             User(3, 30, 6, "Entertainment", False),
@@ -67,10 +67,9 @@ class UserTest(unittest.TestCase):
 
     # summary test
     def test_build_summary_text(self):
-        if hasattr(main, "build_summary_text"):
-            result = main.build_summary_text(self.user)
-            self.assertIn("Total users", result)
-            self.assertIn("Overall average", text)
+        result = main.build_summary_text(self.user)
+        self.assertIn("Total users", result)
+        self.assertIn("Overall average", result)
 
     # load_users test
     def test_load_users(self):
