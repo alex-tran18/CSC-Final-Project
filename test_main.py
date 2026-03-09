@@ -12,6 +12,8 @@ class UserTest(unittest.TestCase):
             User(4, 101, 3, "Habit", True)
         ]
 
+
+
 # convert_bool tests
     def test_convert_bool_true(self):
         self.assertTrue(main.convert_bool("true"))
