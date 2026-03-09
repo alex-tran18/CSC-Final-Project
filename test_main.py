@@ -171,6 +171,26 @@ class UserTest(unittest.TestCase):
         self.assertEqual(result[2], 0)
         self.assertEqual(result[3], 2)
 
+    def test_ratio_debt_and_high_screentime_mixed(self):
+        users = [
+            User(1, 10, 1, True),
+            User(2, 30, 1, True),
+            User(3, 40, 1, False),
+            User(4, 20, 1, False)
+        ]
+
+        result = main.ratio_debt_and_high_screentime(users, high_threshold=25)
+
+        ratio = result[0]
+        both = result[1]
+        debt_total = result[2]
+        high_total = result[3]
+
+        self.assertEqual(debt_total, 2)
+        self.assertEqual(high_total, 2)
+        self.assertEqual(both, 1)
+        self.assertAlmostEqual(ratio, 0.5, places=3)
+
     # summary test
     def test_build_summary_text(self):
         result = main.build_summary_text(self.users)
