@@ -264,7 +264,7 @@ def main():
     print("Ratio (Both / Debt users):", round(ratio, 3))
     print()
 
-    # Correlation between screen time and debta
+    # Correlation between screen time and debt
     corr = correlation_time_and_debt(users)
 
     print("Correlation (Screen Time vs Debt):", round(corr, 3))
