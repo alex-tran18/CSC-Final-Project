@@ -100,6 +100,35 @@ def correlation_time_and_debt(users):
 
     return numerator / ((denominator_x ** 0.5) * (denominator_y ** 0.5))
 
+def average_productivity_ratio(users):
+    if not users:
+        return 0
+    return sum(u.calculate_productivity_ratio() for u in users) / len(users)
+
+def average_time_by_debt(users):
+    debt_total = 0
+    debt_count = 0
+    no_debt_total = 0
+    no_debt_count = 0
+
+    for user in users:
+        if user.debt:
+            debt_total += user.total_time_spent
+            debt_count += 1
+        else:
+            no_debt_total += user.total_time_spent
+            no_debt_count += 1
+
+    debt_avg = 0
+    if debt_count != 0:
+        debt_avg = debt_total / debt_count
+
+    no_debt_avg = 0
+    if no_debt_count != 0:
+        no_debt_avg = no_debt_total / no_debt_count
+
+    return [debt_avg, no_debt_avg, debt_count, no_debt_count]
+
 #Summary text
 def build_summary_text(users) -> str:
 
@@ -141,6 +170,11 @@ def build_summary_text(users) -> str:
         for reason in reasons:
             lines.append(f"{reason}: {reasons[reason]}")
 
+    # Average Productivity Ratio
+    avg_ratio = average_productivity_ratio(users)
+    lines.append("")
+    lines.append(f"Average Productivity Ratio: {avg_ratio:.3f}")
+
     # Productivity ratios
     lines.append("")
     lines.append("Productivity Ratios (loss/time):")
@@ -151,6 +185,19 @@ def build_summary_text(users) -> str:
         for user in users:
             ratio = user.calculate_productivity_ratio()
             lines.append(f"User {user.user_id}: {ratio:.3f}")
+
+    # correlation
+    lines.append("")
+    corr = correlation_time_and_debt(users)
+    lines.append(f"Correlation (Screen Time vs Debt): {corr:.3f}")
+
+    # debt insight
+    lines.append("")
+    lines.append("Debt vs Screen Time:")
+    stats = average_time_by_debt(users)
+    lines.append(f"Avg time (Debt): {stats[0]:.2f} hours/month | Users: {stats[2]}")
+    lines.append(f"Avg time (No Debt): {stats[1]:.2f} hours/month | Users: {stats[3]}")
+    lines.append(f"Difference (Debt - No Debt): {(stats[0] - stats[1]):.2f}")
 
     # Social responsibility message
     lines.append("")
@@ -213,7 +260,7 @@ def main():
     # Correlation between screen time and debt
     corr = correlation_time_and_debt(users)
 
-    print("Correlation (Screen Time vs Debt: ", round(corr, 3))
+    print("Correlation (Screen Time vs Debt): ", round(corr, 3))
     print("Note: positive value means more screen time is associated with higher likelihood of debt.")
     print()
 
@@ -225,6 +272,24 @@ def main():
 
     print()
     print("Tip: Limiting screen time can improve productivity and financial wellbeing.")
+
+    # Productivity Ratio
+    avg_ratio = average_productivity_ratio(users)
+    print("Average Productivity Ratio:", round(avg_ratio, 3))
+    print()
+
+    # average time w debt
+    stats = average_time_by_debt(users)
+    avg_debt = stats[0]
+    avg_no_debt = stats[1]
+    debt_count = stats[2]
+    no_debt_count = stats[3]
+
+    print("---- Debt vs Screen Time ----")
+    print("Users WITH debt:", debt_count, "| Avg screen time:", round(avg_debt, 2))
+    print("Users WITHOUT debt:", no_debt_count, "| Avg screen time:", round(avg_no_debt, 2))
+    print("Difference (Debt - No Debt):", round(avg_debt - avg_no_debt, 2))
+    print()
 
     write_summary_file(users)
 
