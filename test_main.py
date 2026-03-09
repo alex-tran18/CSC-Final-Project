@@ -130,6 +130,7 @@ class UserTest(unittest.TestCase):
         self.assertLess(corr,0)
 
 
+
     # summary test
     def test_build_summary_text(self):
         result = main.build_summary_text(self.users)
