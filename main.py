@@ -118,7 +118,6 @@ def build_summary_text(users) -> str:
 
     lines = []
     lines.append("Social Media Screen Time Analysis")
-    lines.append("=================================")
     lines.append(f"Total users: {len(users)}")
 
     # Overall average
