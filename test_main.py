@@ -96,6 +96,20 @@ class UserTest(unittest.TestCase):
     def test_count_watch_reasons_count2(self):
         self.assertEqual(main.count_watch_reasons([]), {})
 
+    #Correlation between screen time and debt
+    def test_correlation_time_and_debt_empty(self):
+        self.assertEqual(main.correlation_time_and_debt([]), 0)
+
+    def test_correlation_time_and_debt_all_same_debt(self):
+        users = [
+            User(1, 10, 1, "Habit", True),
+            User(2,50,1, "Habit", True),
+            User(3, 100, 1, "Habit", True)
+
+        ]
+        self.assertEqual(main.correlation_time_and_debt(users), 0)
+
+
     # summary test
     def test_build_summary_text(self):
         result = main.build_summary_text(self.users)
