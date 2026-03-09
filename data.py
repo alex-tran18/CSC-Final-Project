@@ -39,4 +39,3 @@ class User:
 
     def high_risk(self):
         return self.assign_usage_level() == "high" and self.debt == True
-
