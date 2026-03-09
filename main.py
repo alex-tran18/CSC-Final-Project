@@ -54,21 +54,6 @@ def highest_and_lowest(users):
             lowest = user
     return [highest, lowest]
 
-#Count watch reasons
-def count_watch_reasons(users):
-
-    reason_count = {}
-
-    for user in users:
-        reason = user.watch_reason
-
-        if reason not in reason_count:
-            reason_count[reason] = 1
-        else:
-            reason_count[reason] += 1
-
-    return reason_count
-
 #Correlation between time and debt
 def correlation_time_and_debt(users):
     if len(users) == 0:
