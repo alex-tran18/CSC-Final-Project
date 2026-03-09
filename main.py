@@ -182,7 +182,7 @@ def build_summary_text(users) -> str:
     lines.append(f"Avg time (No Debt): {stats[1]:.2f} hours/month | Users: {stats[3]}")
     lines.append(f"Difference (Debt - No Debt): {(stats[0] - stats[1]):.2f}")
 
-    # Average Productivity Ratios
+    # Average Productivity Ratio
     avg_ratio = average_productivity_ratio(users)
     lines.append("")
     lines.append(f"Average Productivity Ratio: {avg_ratio:.3f}")
@@ -246,6 +246,22 @@ def main():
 
     print("Highest Usage User:", highest.user_id, highest.total_time_spent)
     print("Lowest Usage User:", lowest.user_id, lowest.total_time_spent)
+    print()
+
+    # Screen + High Usage vs time
+    ratio_stats = ratio_debt_and_high_screentime(users)  # uses average as default threshold
+    ratio = ratio_stats[0]
+    debt_and_high = ratio_stats[1]
+    debt_total = ratio_stats[2]
+    high_total = ratio_stats[3]
+    threshold_used = ratio_stats[4]
+
+    print("Debt & High Screen Time Ratio")
+    print("High screen time threshold used:", round(threshold_used, 2))
+    print("Users WITH debt:", debt_total)
+    print("Users with HIGH screen time:", high_total)
+    print("Users with BOTH debt and high screen time:", debt_and_high)
+    print("Ratio (Both / Debt users):", round(ratio, 3))
     print()
 
     # Correlation between screen time and debt
