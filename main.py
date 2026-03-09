@@ -89,6 +89,34 @@ def build_summary_text(users) -> str:
             f"User {lowest.user_id} — {lowest.total_time_spent} hours/month"
         )
 
+    # Watch reason summary
+    lines.append("")
+    lines.append("Watch Reason Summary:")
+    reasons = count_watch_reasons(users)
+    for reason, count in reasons.items():
+        lines.append(f"{reason}: {count}")
+
+    # Productivity ratios
+    lines.append("")
+    lines.append("Productivity Ratios (loss/time):")
+    for user in users:
+        ratio = user.calculate_productivity_ratio()
+        lines.append(f"User {user.user_id}: {ratio:.3f}")
+
+    # Social responsibility message
+    lines.append("")
+    lines.append("Social Impact Insight:")
+    lines.append("Excessive screen time is associated with increased productivity loss.")
+    lines.append("Encouraging healthier digital habits can improve focus and financial wellbeing.")
+
+    return "\n".join(lines)
+
+
+def write_summary_file(users, filename="summary.txt"):
+    text = build_summary_text(users)
+    with open(filename, "w", encoding="utf-8") as file:
+        file.write(text)
+
 #Main Program
 def main():
 
@@ -140,5 +168,8 @@ def main():
     print()
     print("Tip: Limiting screen time can improve productivity and financial wellbeing.")
 
-main()
+    write_summary_file(users)
+
+if __name__ == "__main__":
+    main()
 
