@@ -12,6 +12,23 @@ class UserTest(unittest.TestCase):
             User(4, 101, 3, "Habit", True)
         ]
 
+    #user method tests
+    def test_assign_usage_level_low(self):
+        u = User(99, 80, 1, "Habit", False)
+        self.assertEqual(u.assign_usage_level(), "low")
+
+    def test_assign_usage_level_medium(self):
+        u = User(99, 150, 1, "Habit", False)
+        self.assertEqual(u.assign_usage_level(), "medium")
+
+    def test_assign_usage_level_high(self):
+        u = User(99, 250, 1, "Habit", False)
+        self.assertEqual(u.assign_usage_level(), "high")
+
+    def test_calculate_productivity_ratio_normal(self):
+        u = User(99, 100, 25, "Habit", False)
+        self.assertAlmostEqual(u.calculate_productivity_ratio(), 0.25, places = 3)
+
 # convert_bool tests
     def test_convert_bool_true(self):
         self.assertTrue(main.convert_bool("true"))
