@@ -1,7 +1,5 @@
 import csv
 import unittest
-from unittest import result
-
 import main
 from data import User
 
@@ -57,7 +55,7 @@ class UserTest(unittest.TestCase):
 
     # Count Watch Reasons
     def test_count_watch_reasons_count1(self):
-        result = main.count_watch_reasons(self.user)
+        result = main.count_watch_reasons(self.users)
         self.assertEqual(result["Habit"], 2)
         self.assertEqual(result["Procrastination"], 1)
         self.assertEqual(result["Entertainment"], 1)
@@ -67,7 +65,7 @@ class UserTest(unittest.TestCase):
 
     # summary test
     def test_build_summary_text(self):
-        result = main.build_summary_text(self.user)
+        result = main.build_summary_text(self.users)
         self.assertIn("Total users", result)
         self.assertIn("Overall average", result)
 
@@ -105,5 +103,4 @@ if __name__ == "__main__":
     unittest.main()
 
 
-#sdjfds
 
