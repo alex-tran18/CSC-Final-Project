@@ -69,6 +69,38 @@ def count_watch_reasons(users):
 
     return reason_count
 
+#Correlation between time and debt
+def correlation_time_and_debt(users):
+    if len(users) == 0:
+        return 0
+
+    xs = [] #total_time_spent
+    ys = [] #debt as 0/1
+
+    for user in users:
+        xs.append(user.total_time_spent)
+        ys.append(1 if user.debt else 0)
+
+    mean_x = sum(xs) / len(xs)
+    mean_y = sum(ys) / len(ys)
+
+    numerator = 0
+    denominator_x = 0
+    denominator_y = 0
+
+    for i in range(len(xs)):
+        dx = xs[i] - mean_x
+        dy = ys[i] - mean_y
+        numerator += dx * dy
+        denominator_x += dx * dx
+        denominator_y += dy * dy
+
+    if denominator_x == 0 or denominator_y == 0:
+        return 0
+
+    return numerator / ((denominator_x ** 0.5) * (denominator_y ** 0.5))
+
+#Summary text
 def build_summary_text(users) -> str:
 
     lines = []
@@ -133,6 +165,7 @@ def write_summary_file(users, filename="summary.txt"):
     with open(filename, "w") as file:
         file.write(text)
 
+
 #Main Program
 def main():
 
@@ -175,6 +208,13 @@ def main():
     for reason in reasons:
         print(reason, ":", reasons[reason])
 
+    print()
+
+    # Correlation between screen time and debt
+    corr = correlation_time_and_debt(users)
+
+    print("Correlation (Screen Time vs Debt: ", round(corr, 3))
+    print("Note: positive value means more screen time is associated with higher likelihood of debt.")
     print()
 
     # High risk users
