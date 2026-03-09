@@ -143,7 +143,6 @@ def ratio_debt_and_high_screentime(users, high_threshold = None):
 
 #Summary text
 def build_summary_text(users) -> str:
-
     lines = []
     lines.append("Social Media Screen Time Analysis:")
     lines.append(f"Total users: {len(users)}")
@@ -170,7 +169,7 @@ def build_summary_text(users) -> str:
             f"User {lowest.user_id} — {lowest.total_time_spent} hours/month"
         )
 
-    # correlation
+    # correlation between screen time and debt
     lines.append("")
     corr = correlation_time_and_debt(users)
     lines.append(f"Correlation (Screen Time vs Debt): {corr:.3f}")
@@ -187,6 +186,22 @@ def build_summary_text(users) -> str:
     avg_ratio = average_productivity_ratio(users)
     lines.append("")
     lines.append(f"Average Productivity Ratio: {avg_ratio:.3f}")
+
+    #Debt and high screen time ratio
+    lines.append("")
+    lines.append("Debt & High Screen Time:")
+    ratio_stats = ratio_debt_and_high_screentime(users)
+    ratio = ratio_stats[0]
+    both = ratio_stats[1]
+    debt_total = ratio_stats[2]
+    high_total = ratio_stats[3]
+    threshold_used = ratio_stats[4]
+
+    lines.append(f"High screen time threshold used: {threshold_used:.2f} hours/month")
+    lines.append(f"Users with debt: {debt_total}")
+    lines.append(f"Users with high screen time: {high_total}")
+    lines.append(f"Users with BOTH debt and high screen time: {both}")
+    lines.append(f"Ratio (Both / Debt users): {ratio:.3f}")
 
     # Social responsibility message
     lines.append("")
