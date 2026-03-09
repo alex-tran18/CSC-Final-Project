@@ -131,7 +131,7 @@ def build_summary_text(users) -> str:
 
 def write_summary_file(users, filename="summary.txt"):
     text = build_summary_text(users)
-    with open(filename, "w", encoding="utf-8") as file:
+    with open(filename, "w") as file:
         file.write(text)
 
 #Main Program
