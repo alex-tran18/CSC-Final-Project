@@ -170,6 +170,19 @@ def build_summary_text(users) -> str:
         for reason in reasons:
             lines.append(f"{reason}: {reasons[reason]}")
 
+    # correlation
+    lines.append("")
+    corr = correlation_time_and_debt(users)
+    lines.append(f"Correlation (Screen Time vs Debt): {corr:.3f}")
+
+    # debt insight
+    lines.append("")
+    lines.append("Debt vs Screen Time:")
+    stats = average_time_by_debt(users)
+    lines.append(f"Avg time (Debt): {stats[0]:.2f} hours/month | Users: {stats[2]}")
+    lines.append(f"Avg time (No Debt): {stats[1]:.2f} hours/month | Users: {stats[3]}")
+    lines.append(f"Difference (Debt - No Debt): {(stats[0] - stats[1]):.2f}")
+
     # Average Productivity Ratios
     avg_ratio = average_productivity_ratio(users)
     lines.append("")
@@ -185,19 +198,6 @@ def build_summary_text(users) -> str:
         for user in users:
             ratio = user.calculate_productivity_ratio()
             lines.append(f"User {user.user_id}: {ratio:.3f}")
-
-    # correlation
-    lines.append("")
-    corr = correlation_time_and_debt(users)
-    lines.append(f"Correlation (Screen Time vs Debt): {corr:.3f}")
-
-    # debt insight
-    lines.append("")
-    lines.append("Debt vs Screen Time:")
-    stats = average_time_by_debt(users)
-    lines.append(f"Avg time (Debt): {stats[0]:.2f} hours/month | Users: {stats[2]}")
-    lines.append(f"Avg time (No Debt): {stats[1]:.2f} hours/month | Users: {stats[3]}")
-    lines.append(f"Difference (Debt - No Debt): {(stats[0] - stats[1]):.2f}")
 
     # Social responsibility message
     lines.append("")
