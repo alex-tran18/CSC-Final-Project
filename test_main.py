@@ -55,6 +55,5 @@ class UserTest(unittest.TestCase):
         self.assertIsNone(highest)
         self.assertIsNone(lowest)
 
-        #dfjjsdf
 
 
