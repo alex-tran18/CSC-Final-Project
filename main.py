@@ -31,7 +31,7 @@ def load_users(filename):
 
 # Calculate Average Screen Time of Each User
 def average_time(users):
-    if len(users) == 0
+    if len(users) == 0:
         return 0
 
     total = 0
