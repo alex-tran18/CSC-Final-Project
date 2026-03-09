@@ -129,7 +129,7 @@ class UserTest(unittest.TestCase):
         corr = main.correlation_time_and_debt(users)
         self.assertLess(corr,0)
 
-    #average time by debt
+    #average time by debt case
     def test_average_time_by_debt_empty(self):
         result = main.average_time_by_debt([])
         self.assertEqual(result[0], 0)  # debt_avg
