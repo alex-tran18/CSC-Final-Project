@@ -185,13 +185,14 @@ def main():
     print("Total Users:", len(users))
     print()
 
-    # Print first 1000 users
+    # Print first 5 users
     print("Sample Users: ")
-    for u in users[:100]:
+    for u in users[:5]:
         print(u)
 
     # Average time
     average = average_time(users)
+    print()
     print("Average Time Spent:", round(average, 2))
     print()
 
@@ -211,14 +212,6 @@ def main():
     print("Note: positive value means more screen time is associated with higher likelihood of debt.")
     print()
 
-    # High risk users
-    print("Users with High Screen Time and Debt:")
-    for user in users:
-        if user.high_risk():
-            print("UserID:", user.user_id)
-
-    print()
-    print("Tip: Limiting screen time can improve productivity and financial wellbeing.")
 
     # Productivity Ratio
     avg_ratio = average_productivity_ratio(users)
@@ -232,7 +225,7 @@ def main():
     debt_count = stats[2]
     no_debt_count = stats[3]
 
-    print(" Debt vs Screen Time")
+    print("Debt vs Screen Time")
     print("Users WITH debt:", debt_count, "| Avg screen time:", round(avg_debt, 2))
     print("Users WITHOUT debt:", no_debt_count, "| Avg screen time:", round(avg_no_debt, 2))
     print("Difference (Debt - No Debt):", round(avg_debt - avg_no_debt, 2))
