@@ -20,9 +20,9 @@ def load_users(filename):
     for row in reader:
         user = User(
             int(row["UserID"]),
-            float(row["total_time_spent"]),
-            float(row["productivity_loss"]),
-            row["watch_reason"],
+            float(row["Total Time Spent"]),
+            float(row["Productivity Loss"]),
+            row["Watch Reason"],
             convert_bool(row["Debt"])
         )
         users.append(user)
