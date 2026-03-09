@@ -1,5 +1,4 @@
-Social Media Screen Time Analysis
-=================================
+Social Media Screen Time Analysis:
 Total users: 1000
 Overall average usage (hours/month): 151.41
 
