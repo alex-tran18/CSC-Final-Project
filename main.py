@@ -113,6 +113,34 @@ def average_time_by_debt(users):
 
     return [debt_avg, no_debt_avg, debt_count, no_debt_count]
 
+#Ratio between users with debt and high screen time
+def ratio_debt_and_high_screentime(users, high_threshold = None):
+    if not users:
+        return [0, 0, 0, 0, 0,]
+    if high_threshold is None:
+        high_threshold = average_time(users)
+
+    debt_total = 0
+    high_total = 0
+    debt_and_high = 0
+
+    for user in users:
+        has_debt = user.debt
+        is_high = user.total_time_spent >= high_threshold
+
+        if has_debt:
+            debt_total += 1
+        if is_high:
+            high_total += 1
+        if has_debt and is_high:
+            debt_and_high += 1
+
+    ratio = 0
+    if debt_total != 0:
+        ratio = debt_and_high / debt_total
+
+    return [ratio, debt_and_high, debt_total, high_total, high_threshold]
+
 #Summary text
 def build_summary_text(users) -> str:
 
