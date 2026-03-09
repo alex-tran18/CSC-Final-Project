@@ -159,6 +159,9 @@ class UserTest(unittest.TestCase):
         self.assertEqual(result[2], 2)
         self.assertEqual(result[3], 0)
 
+    #debt and high screen time ratio
+    def test
+
     def test_average_time_by_debt_no_debt(self):
         users = [
             User(1, 100, 1,False),

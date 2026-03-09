@@ -17,6 +17,13 @@ Difference (Debt - No Debt): -3.26
 
 Average Productivity Ratio: 0.065
 
+Debt & High Screen Time:
+High screen time threshold used: 151.41 hours/month
+Users with debt: 599
+Users with high screen time: 501
+Users with BOTH debt and high screen time: 302
+Ratio (Both / Debt users): 0.504
+
 Social Impact Insight:
 In this dataset, debt status shows little to no association with screen-time measures.
 We did not find evidence that debt is linked to more screen usage in this data set,
