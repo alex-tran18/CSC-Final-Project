@@ -21,7 +21,7 @@ def load_users(filename):
         user = User(
             int(row["UserID"]),
             float(row["Total Time Spent"]),
-            float(row["Productivity Loss"]),
+            float(row["ProductivityLoss"]),
             row["Watch Reason"],
             convert_bool(row["Debt"])
         )
