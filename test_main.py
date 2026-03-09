@@ -86,16 +86,6 @@ class UserTest(unittest.TestCase):
         self.assertIsNone(highest)
         self.assertIsNone(lowest)
 
-    # Count Watch Reasons
-    def test_count_watch_reasons_count1(self):
-        result = main.count_watch_reasons(self.users)
-        self.assertEqual(result["Habit"], 2)
-        self.assertEqual(result["Procrastination"], 1)
-        self.assertEqual(result["Entertainment"], 1)
-
-    def test_count_watch_reasons_count2(self):
-        self.assertEqual(main.count_watch_reasons([]), {})
-
     #Correlation between screen time and debt
     def test_correlation_time_and_debt_empty(self):
         self.assertEqual(main.correlation_time_and_debt([]), 0)
@@ -198,7 +188,6 @@ class UserTest(unittest.TestCase):
                     "UserID",
                     "Total Time Spent",
                     "ProductivityLoss",
-                    "Watch Reason",
                     "Debt"
                 ]
             )
@@ -207,7 +196,6 @@ class UserTest(unittest.TestCase):
                 "UserID": "10",
                 "Total Time Spent": "150",
                 "ProductivityLoss": "4",
-                "Watch Reason": "Boredom",
                 "Debt": "true"
             })
 
