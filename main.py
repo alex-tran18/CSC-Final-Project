@@ -277,7 +277,7 @@ def main():
     print("Average Productivity Ratio:", round(avg_ratio, 3))
     print()
 
-    # average time w debt
+    # average time w debts
     stats = average_time_by_debt(users)
     avg_debt = stats[0]
     avg_no_debt = stats[1]
