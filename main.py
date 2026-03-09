@@ -233,7 +233,7 @@ def main():
     debt_count = stats[2]
     no_debt_count = stats[3]
 
-    print("---- Debt vs Screen Time ----")
+    print(" Debt vs Screen Time")
     print("Users WITH debt:", debt_count, "| Avg screen time:", round(avg_debt, 2))
     print("Users WITHOUT debt:", no_debt_count, "| Avg screen time:", round(avg_no_debt, 2))
     print("Difference (Debt - No Debt):", round(avg_debt - avg_no_debt, 2))

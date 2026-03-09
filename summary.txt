@@ -19,6 +19,6 @@ Difference (Debt - No Debt): -3.26
 Average Productivity Ratio: 0.065
 
 Social Impact Insight:
-Higher screen time appears to be associated with increased likelihood of debt.
-Users with debt tend to spend more time on social media compared to those without debt.
-Encouraging healthier digital habits can improve focus and financial stability and productivity.
+In this dataset, debt status shows little to no association with screen-time measures.
+We did not find evidence that debt is linked to more screen usage in this data set,
+but that could reflect a lack of sample users. Future work could test a larger dataset.
