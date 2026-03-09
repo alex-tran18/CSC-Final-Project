@@ -22,6 +22,7 @@ def load_users(filename):
             int(row["UserID"]),
             float(row["Total Time Spent"]),
             float(row["ProductivityLoss"]),
+            row["Watch Reason"],
             convert_bool(row["Debt"])
         )
         users.append(user)
@@ -52,6 +53,21 @@ def highest_and_lowest(users):
         if user.total_time_spent < lowest.total_time_spent:
             lowest = user
     return [highest, lowest]
+
+#Count watch reasons
+def count_watch_reasons(users):
+
+    reason_count = {}
+
+    for user in users:
+        reason = user.watch_reason
+
+        if reason not in reason_count:
+            reason_count[reason] = 1
+        else:
+            reason_count[reason] += 1
+
+    return reason_count
 
 #Correlation between time and debt
 def correlation_time_and_debt(users):

@@ -9,12 +9,6 @@ User 241 — 298.0 hours/month
 Lowest Usage User:
 User 124 — 10.0 hours/month
 
-Watch Reason Summary:
-Procrastination: 120
-Habit: 339
-Entertainment: 264
-Boredom: 277
-
 Correlation (Screen Time vs Debt): -0.019
 
 Debt vs Screen Time:
@@ -1027,5 +1021,6 @@ User 999: 0.020
 User 1000: 0.036
 
 Social Impact Insight:
-Excessive screen time is associated with increased productivity loss.
-Encouraging healthier digital habits can improve focus and financial wellbeing.
+Higher screen time appears to be associated with increased likelihood of debt.
+Users with debt tend to spend more time on social media compared to those without debt.
+Encouraging healthier digital habits can improve focus and financial stability and productivity.
