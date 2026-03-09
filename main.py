@@ -202,8 +202,9 @@ def build_summary_text(users) -> str:
     # Social responsibility message
     lines.append("")
     lines.append("Social Impact Insight:")
-    lines.append("Excessive screen time is associated with increased productivity loss.")
-    lines.append("Encouraging healthier digital habits can improve focus and financial wellbeing.")
+    lines.append("Higher screen time appears to be associated with increased likelihood of debt.")
+    lines.append("Users with debt tend to spend more time on social media compared to those without debt.")
+    lines.append("Encouraging healthier digital habits can improve focus and financial stability and productivity.")
 
     return "\n".join(lines)
 
@@ -225,7 +226,7 @@ def main():
 
     # Print first 1000 users
     print("Sample Users: ")
-    for u in users[:1000]:
+    for u in users[:100]:
         print(u)
 
     # Average time
@@ -254,7 +255,7 @@ def main():
     # Correlation between screen time and debt
     corr = correlation_time_and_debt(users)
 
-    print("Correlation (Screen Time vs Debt): ", round(corr, 3))
+    print("Correlation (Screen Time vs Debt):", round(corr, 3))
     print("Note: positive value means more screen time is associated with higher likelihood of debt.")
     print()
 
