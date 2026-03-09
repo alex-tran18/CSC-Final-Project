@@ -101,13 +101,22 @@ def build_summary_text(users) -> str:
     lines.append("Watch Reason Summary:")
     reasons = count_watch_reasons(users)
 
-    if len(reasons) ==
+    if len(reasons) == 0:
+        lines.append("No watch reasons available.")
+    else:
+        for reason in reasons:
+            lines.append(f"{reason}: {reasons[reason]}")
+
     # Productivity ratios
     lines.append("")
     lines.append("Productivity Ratios (loss/time):")
-    for user in users:
-        ratio = user.calculate_productivity_ratio()
-        lines.append(f"User {user.user_id}: {ratio:.3f}")
+
+    if len(users) == 0:
+        lines.append("No users available.")
+    else:
+        for user in users:
+            ratio = user.calculate_productivity_ratio()
+            lines.append(f"User {user.user_id}: {ratio: .3f}")
 
     # Social responsibility message
     lines.append("")

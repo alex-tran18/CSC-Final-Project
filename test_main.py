@@ -102,8 +102,8 @@ class UserTest(unittest.TestCase):
         self.assertEqual(users[0].user_id, 10)
         self.assertTrue(users[0].debt)
 
-    if __name__ == "__main__":
-        unittest.main()
+if __name__ == "__main__":
+    unittest.main()
 
 
 
