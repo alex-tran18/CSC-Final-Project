@@ -151,9 +151,7 @@ class UserTest(unittest.TestCase):
         debt_count = result[2]
         no_debt_count = result[3]
 
-        # debt avg = (100 + 300) / 2 = 200
         self.assertAlmostEqual(debt_avg, 200.0, places=3)
-        # no debt avg = (50 + 150) / 2 = 100
         self.assertAlmostEqual(no_debt_avg, 100.0, places=3)
 
         self.assertEqual(debt_count, 2)
