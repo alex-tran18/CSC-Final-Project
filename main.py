@@ -163,9 +163,9 @@ def build_summary_text(users) -> str:
     # Social responsibility message
     lines.append("")
     lines.append("Social Impact Insight:")
-    lines.append("Higher screen time appears to be associated with increased likelihood of debt.")
-    lines.append("Users with debt tend to spend more time on social media compared to those without debt.")
-    lines.append("Encouraging healthier digital habits can improve focus and financial stability and productivity.")
+    lines.append("In this dataset, debt status shows little to no association with screen-time measures.")
+    lines.append("We did not find evidence that debt is linked to more screen usage in this data set,")
+    lines.append("but that could reflect a lack of sample users. Future work could test a larger dataset.")
 
     return "\n".join(lines)
 
