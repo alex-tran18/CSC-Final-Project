@@ -106,7 +106,7 @@ class UserTest(unittest.TestCase):
     def test_load_users(self):
         filename = "test_data.csv"
 
-        with open(filename, "w", newline="", encoding="utf-8") as f:
+        with open(filename, "w", newline="",) as f:
             writer = csv.DictWriter(
                 f,
                 fieldnames=[
