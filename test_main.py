@@ -127,7 +127,7 @@ class UserTest(unittest.TestCase):
             User(4, 100, 1, "Habit", False)
         ]
         corr = main.correlation_time_and_debt(users)
-        self.assertGreater(corr,0)
+        self.assertLess(corr,0)
 
 
     # summary test
