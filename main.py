@@ -1,7 +1,7 @@
 import csv
 from data import User
 
-# Convert Debt String into Boolean
+# Convert Debt String into Booleans
 def convert_bool(tf:str) -> bool:
     tf = str(tf).strip().lower()
     if tf == "true":
