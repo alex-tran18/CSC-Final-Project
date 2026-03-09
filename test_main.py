@@ -164,10 +164,10 @@ class UserTest(unittest.TestCase):
         ]
 
         result = main.average_time_by_debt(users)
-        self.assertAlmostEqual(result[0], 150.0, places=3)  # debt_avg
-        self.assertEqual(result[1], 0)  # no_debt_avg
-        self.assertEqual(result[2], 2)  # debt_count
-        self.assertEqual(result[3], 0)  # no_debt_count
+        self.assertAlmostEqual(result[0], 150.0, places=3)
+        self.assertEqual(result[1], 0)
+        self.assertEqual(result[2], 2)
+        self.assertEqual(result[3], 0)
 
     def test_average_time_by_debt_no_debt(self):
         users = [
@@ -176,9 +176,9 @@ class UserTest(unittest.TestCase):
         ]
 
         result = main.average_time_by_debt(users)
-        self.assertEqual(result[0], 0)  # debt_avg
-        self.assertAlmostEqual(result[1], 150.0, places=3)  # no_debt_avg
-        self.assertEqual(result[2], 0)  # debt_count
+        self.assertEqual(result[0], 0)
+        self.assertAlmostEqual(result[1], 150.0, places=3)
+        self.assertEqual(result[2], 0)
         self.assertEqual(result[3], 2)
 
     # summary test
