@@ -19,7 +19,7 @@ def load_users(filename):
 
     for row in reader:
         user = User(
-            int(row["user_id"]),
+            int(row["UserID"]),
             float(row["total_time_spent"]),
             float(row["productivity_loss"]),
             row["watch_reason"],
@@ -43,8 +43,10 @@ def average_time(users):
 def highest_and_lowest(users):
     if len(users) == 0:
         return [None, None]
+
     highest = users[0]
     lowest = users[0]
+
     for user in users:
         if user.total_time_spent > highest.total_time_spent:
             highest = user
@@ -189,3 +191,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
