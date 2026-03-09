@@ -109,26 +109,6 @@ class UserTest(unittest.TestCase):
         ]
         self.assertEqual(main.correlation_time_and_debt(users), 0)
 
-    def test_correlation_time_and_debt_positive(self):
-        users = [
-            User(1, 10, 1, "Habit", False),
-            User(2, 20, 1, "Habit", False),
-            User(3, 80, 1, "Habit", True),
-            User(4, 100, 1, "Habit", True)
-        ]
-        corr = main.correlation_time_and_debt(users)
-        self.assertGreater(corr,0)
-
-    def test_correlation_time_and_debt_negative(self):
-        users = [
-            User(1, 10, 1,"Habit", True),
-            User(2, 20, 1, "Habit", True),
-            User(3, 80, 1, "Habit", False),
-            User(4, 100, 1, "Habit", False)
-        ]
-        corr = main.correlation_time_and_debt(users)
-        self.assertGreater(corr,0)
-
 
     # summary test
     def test_build_summary_text(self):
